@@ -1,0 +1,1 @@
+C:\Git\MainClient\MainClientVibration\MainClientVibration\MainClientVibration.csproj;x64

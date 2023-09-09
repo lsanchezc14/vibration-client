@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MainClientVibration.MVVM.ViewModel;assembly=MainClientVibration.MVVM.ViewModel"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui"
+             x:Class="MainClientVibration.MainPage">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="Open" Clicked="MenuOpen_Clicked"/>
+            <MenuFlyoutItem Text="Save" Command="{Binding AddOrUpdateCommand}"/>
+            <MenuFlyoutItem Text="Exit" Clicked="MenuExit_Clicked"/>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <ContentPage.Content>
+        <Grid Margin="100,20,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <lvc:CartesianChart
+                Grid.Row="0"
+                Grid.Column="0"
+                Series="{Binding Series}"
+                XAxes="{Binding XAxes}"
+                YAxes="{Binding YAxes}">
+            </lvc:CartesianChart>
+            <lvc:CartesianChart
+                Grid.Row="1"
+                Grid.Column="0"
+                Series="{Binding SeriesZoomed}"
+                ZoomMode="X"
+                ZoomingSpeed="0">
+            </lvc:CartesianChart>
+            <lvc:PolarChart
+                Grid.Row="0"
+                Grid.Column="1"
+                Series="{Binding SeriesPolar}"
+                AngleAxes="{Binding AngleAxes}">
+            </lvc:PolarChart>
+            <lvc:CartesianChart
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Series="{Binding SeriesFft}"
+                XAxes="{Binding XAxesFft}"
+                YAxes="{Binding YAxesFft}">
+            </lvc:CartesianChart>
+
+        </Grid>
+    </ContentPage.Content>
+
+
+</ContentPage>
